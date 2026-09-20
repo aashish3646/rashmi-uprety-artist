@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import {
   LayoutDashboard,
   FileText,
@@ -26,6 +27,7 @@ export interface AdminSidebarProps {
 
 export function AdminSidebar({ isOpen, onCloseMobile }: AdminSidebarProps) {
   const location = useLocation();
+  const { logout } = useAuth();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -156,8 +158,10 @@ export function AdminSidebar({ isOpen, onCloseMobile }: AdminSidebarProps) {
             <span>View Website</span>
           </a>
           <button
-            onClick={() => alert('Sign out mock functionality')}
-            className="w-full flex items-center gap-2 px-3 py-2 text-neutral-400 hover:text-red-400 transition-colors text-left"
+            onClick={() => {
+              logout();
+            }}
+            className="w-full flex items-center gap-2 px-3 py-2 text-neutral-400 hover:text-red-400 transition-colors text-left cursor-pointer"
           >
             <LogOut className="w-4 h-4" />
             <span>Sign Out</span>

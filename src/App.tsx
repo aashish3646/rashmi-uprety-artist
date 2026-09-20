@@ -1,4 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import { ProtectedRoute } from './components/admin/ProtectedRoute';
+
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { WorkPage } from './pages/WorkPage';
@@ -8,6 +11,7 @@ import { ShowreelPage } from './pages/ShowreelPage';
 import { ContactPage } from './pages/ContactPage';
 
 // Admin CMS Pages
+import { AdminLoginPage } from './pages/admin/AdminLoginPage';
 import { DashboardPage } from './pages/admin/DashboardPage';
 import { ContentListPage } from './pages/admin/ContentListPage';
 import { HomePageEditor } from './pages/admin/HomePageEditor';
@@ -24,47 +28,199 @@ import { AccountPage } from './pages/admin/AccountPage';
 
 export function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Public Website Routes */}
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/work" element={<WorkPage />} />
-        <Route path="/theatre" element={<TheatrePage />} />
-        <Route path="/gallery" element={<GalleryPage />} />
-        <Route path="/showreel" element={<ShowreelPage />} />
-        <Route path="/contact" element={<ContactPage />} />
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Public Website Routes */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/work" element={<WorkPage />} />
+          <Route path="/theatre" element={<TheatrePage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/showreel" element={<ShowreelPage />} />
+          <Route path="/contact" element={<ContactPage />} />
 
-        {/* Admin Dashboard CMS Routes */}
-        <Route path="/admin" element={<DashboardPage />} />
-        <Route path="/admin/content" element={<ContentListPage />} />
-        <Route path="/admin/content/home" element={<HomePageEditor />} />
-        <Route path="/admin/content/about" element={<AboutPageEditor />} />
-        <Route path="/admin/content/work" element={<ContentListPage />} />
-        <Route path="/admin/content/theatre" element={<ContentListPage />} />
-        <Route path="/admin/content/showreel" element={<ContentListPage />} />
-        <Route path="/admin/content/contact" element={<ContentListPage />} />
+          {/* Admin Login Route */}
+          <Route path="/admin/login" element={<AdminLoginPage />} />
 
-        {/* Project & Theatre Management */}
-        <Route path="/admin/projects" element={<ProjectListPage />} />
-        <Route path="/admin/projects/new" element={<ProjectEditorPage />} />
-        <Route path="/admin/projects/:id" element={<ProjectEditorPage />} />
+          {/* Protected Admin Dashboard CMS Routes */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/content"
+            element={
+              <ProtectedRoute>
+                <ContentListPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/content/home"
+            element={
+              <ProtectedRoute>
+                <HomePageEditor />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/content/about"
+            element={
+              <ProtectedRoute>
+                <AboutPageEditor />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/content/work"
+            element={
+              <ProtectedRoute>
+                <ContentListPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/content/theatre"
+            element={
+              <ProtectedRoute>
+                <ContentListPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/content/showreel"
+            element={
+              <ProtectedRoute>
+                <ContentListPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/content/contact"
+            element={
+              <ProtectedRoute>
+                <ContentListPage />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route path="/admin/theatre" element={<TheatreListPage />} />
-        <Route path="/admin/theatre/new" element={<TheatreEditorPage />} />
-        <Route path="/admin/theatre/:id" element={<TheatreEditorPage />} />
+          {/* Project & Theatre Management */}
+          <Route
+            path="/admin/projects"
+            element={
+              <ProtectedRoute>
+                <ProjectListPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/projects/new"
+            element={
+              <ProtectedRoute>
+                <ProjectEditorPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/projects/:id"
+            element={
+              <ProtectedRoute>
+                <ProjectEditorPage />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Media & Gallery */}
-        <Route path="/admin/media" element={<MediaLibraryPage />} />
-        <Route path="/admin/media/photos" element={<MediaLibraryPage />} />
-        <Route path="/admin/media/videos" element={<MediaLibraryPage />} />
-        <Route path="/admin/gallery" element={<GalleryManagerPage />} />
+          <Route
+            path="/admin/theatre"
+            element={
+              <ProtectedRoute>
+                <TheatreListPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/theatre/new"
+            element={
+              <ProtectedRoute>
+                <TheatreEditorPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/theatre/:id"
+            element={
+              <ProtectedRoute>
+                <TheatreEditorPage />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Inquiries, Settings, & Account */}
-        <Route path="/admin/inquiries" element={<InquiriesPage />} />
-        <Route path="/admin/settings" element={<SiteSettingsPage />} />
-        <Route path="/admin/account" element={<AccountPage />} />
-      </Routes>
-    </BrowserRouter>
+          {/* Media & Gallery */}
+          <Route
+            path="/admin/media"
+            element={
+              <ProtectedRoute>
+                <MediaLibraryPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/media/photos"
+            element={
+              <ProtectedRoute>
+                <MediaLibraryPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/media/videos"
+            element={
+              <ProtectedRoute>
+                <MediaLibraryPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/gallery"
+            element={
+              <ProtectedRoute>
+                <GalleryManagerPage />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Inquiries, Settings, & Account */}
+          <Route
+            path="/admin/inquiries"
+            element={
+              <ProtectedRoute>
+                <InquiriesPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/settings"
+            element={
+              <ProtectedRoute>
+                <SiteSettingsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/account"
+            element={
+              <ProtectedRoute>
+                <AccountPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
