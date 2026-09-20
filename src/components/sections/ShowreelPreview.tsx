@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Play } from 'lucide-react';
 import { SectionLabel } from '../ui/SectionLabel';
 import { Button } from '../ui/Button';
+import { SHOWREEL_THUMBNAIL } from '../../data/contentData';
 
 export function ShowreelPreview() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -21,13 +22,18 @@ export function ShowreelPreview() {
           </p>
         </div>
 
-        {/* Cinematic Video Placeholder */}
-        <div className="relative aspect-video max-w-5xl mx-auto w-full bg-[#111111] border border-[#F3F0EA]/10 flex flex-col items-center justify-center text-center p-8 overflow-hidden group">
-          {/* Subtle grid pattern background */}
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#F3F0EA_1px,transparent_1px)] [background-size:24px_24px]" />
+        {/* Cinematic Video Placeholder featuring SHOWREEL_THUMBNAIL (IMG_9578.JPG) */}
+        <div className="relative aspect-video max-w-5xl mx-auto w-full bg-[#111111] border border-[#F3F0EA]/10 flex flex-col items-center justify-center text-center overflow-hidden group">
+          {/* Background showreel thumbnail image */}
+          <img
+            src={SHOWREEL_THUMBNAIL.src}
+            alt={SHOWREEL_THUMBNAIL.alt}
+            className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/80 via-[#080808]/40 to-transparent" />
 
           {!isPlaying ? (
-            <div className="relative z-10 flex flex-col items-center gap-6">
+            <div className="relative z-10 flex flex-col items-center gap-6 p-8">
               <button
                 type="button"
                 onClick={() => setIsPlaying(true)}
@@ -47,7 +53,7 @@ export function ShowreelPreview() {
               </div>
             </div>
           ) : (
-            <div className="relative z-10 space-y-4 max-w-md">
+            <div className="relative z-10 space-y-4 max-w-md p-8 bg-[#080808]/90 border border-[#F3F0EA]/10 rounded-lg">
               <p className="font-serif text-2xl text-[#F3F0EA]">
                 [SHOWREEL VIDEO CONTAINER READY]
               </p>

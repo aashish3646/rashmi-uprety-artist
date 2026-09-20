@@ -43,14 +43,15 @@ export function MediaLibraryPage() {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-3 py-1.5 bg-white border border-neutral-300 rounded-md text-xs font-sans text-neutral-800"
+            className="px-3 py-1.5 bg-white border border-neutral-300 rounded-md text-xs font-sans text-neutral-800 capitalize"
           >
             <option value="All">All Categories</option>
-            <option value="Portraits">Portraits</option>
-            <option value="Theatre">Theatre</option>
-            <option value="Editorial">Editorial</option>
-            <option value="Film">Film</option>
-            <option value="Behind the Scenes">Behind the Scenes</option>
+            <option value="portrait">Portraits</option>
+            <option value="editorial">Editorial</option>
+            <option value="theatre">Theatre</option>
+            <option value="work">Work / Film</option>
+            <option value="showreel">Showreel</option>
+            <option value="behind-the-scenes">Behind the Scenes</option>
           </select>
         </div>
       </FilterBar>

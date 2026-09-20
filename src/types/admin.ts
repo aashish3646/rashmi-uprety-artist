@@ -1,7 +1,43 @@
-// TypeScript definitions for Admin CMS Data
+// TypeScript definitions for Admin CMS Data & Centralized Image Metadata
 
 export type ContentStatus = 'Published' | 'Draft' | 'Archived';
 export type InquiryStatus = 'New' | 'Read' | 'Archived';
+
+export type ImageCategory =
+  | 'portrait'
+  | 'editorial'
+  | 'theatre'
+  | 'work'
+  | 'behind-the-scenes'
+  | 'showreel'
+  | 'gallery';
+
+export type ImageUsage =
+  | 'hero'
+  | 'about'
+  | 'work'
+  | 'theatre'
+  | 'showreel'
+  | 'contact'
+  | 'gallery';
+
+export interface ImageMetadata {
+  imageId: string;
+  id: string;
+  filename: string;
+  src: string;
+  alt: string;
+  altText: string;
+  category: ImageCategory;
+  usage: ImageUsage[];
+  featured: boolean;
+  isFeatured: boolean;
+  project?: string;
+  year?: string;
+  orientation: 'portrait' | 'landscape' | 'square';
+  dimensions: string;
+  size: string;
+}
 
 export interface AdminPageSummary {
   id: string;
@@ -44,16 +80,8 @@ export interface AdminTheatreProduction {
   isMockData: boolean;
 }
 
-export interface AdminMediaAsset {
-  id: string;
-  filename: string;
-  src: string;
+export interface AdminMediaAsset extends ImageMetadata {
   type: 'image' | 'video';
-  dimensions: string;
-  size: string;
-  altText: string;
-  category: 'Portraits' | 'Theatre' | 'Editorial' | 'Film' | 'Behind the Scenes';
-  isFeatured: boolean;
   createdAt: string;
 }
 

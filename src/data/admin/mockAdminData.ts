@@ -6,22 +6,11 @@ import {
   AdminInquiry,
   AdminSiteSettings,
 } from '../../types/admin';
-
-// Real local image imports for mock data references
-import mainPhoto from '../../assets/images/Main Photo.jpg';
-import portraitImg from '../../assets/images/portrait.jpg';
-import pmb3283 from '../../assets/images/PMB03283.jpg';
-import pmb3284 from '../../assets/images/PMB03284.jpg';
-import pmb4429 from '../../assets/images/PMB04429.jpg';
-import theatre1 from '../../assets/images/theatre-1.jpg';
-import theatre2 from '../../assets/images/theatre-2.jpg';
-import dsc7111 from '../../assets/images/DSC07111.JPG';
-import dsc7418 from '../../assets/images/DSC07418.JPG';
-import img4724 from '../../assets/images/IMG_4724.JPG';
+import { IMAGE_REGISTRY } from '../contentData';
 
 export const MOCK_ADMIN_STATS = {
   publishedWorks: 6,
-  mediaAssets: 18,
+  mediaAssets: Object.keys(IMAGE_REGISTRY).length,
   drafts: 2,
   inquiries: 5,
 };
@@ -44,8 +33,8 @@ export const MOCK_PROJECTS: AdminProject[] = [
     role: 'Lead Role',
     year: '2024',
     description: 'A feature film exploring human connections and emotional isolation. [Demo Data]',
-    featuredImage: pmb4429,
-    galleryImages: [pmb4429, portraitImg],
+    featuredImage: IMAGE_REGISTRY['film-pmb4429'].src,
+    galleryImages: [IMAGE_REGISTRY['film-pmb4429'].src, IMAGE_REGISTRY['portrait-editorial'].src],
     externalLink: 'https://example.com/project-1',
     status: 'Published',
     lastUpdated: '2026-09-20',
@@ -58,8 +47,8 @@ export const MOCK_PROJECTS: AdminProject[] = [
     role: 'Protagonist',
     year: '2023',
     description: 'Independent cinematic drama performance. [Demo Data]',
-    featuredImage: pmb3283,
-    galleryImages: [pmb3283, dsc7111],
+    featuredImage: IMAGE_REGISTRY['film-pmb3283'].src,
+    galleryImages: [IMAGE_REGISTRY['film-pmb3283'].src, IMAGE_REGISTRY['gallery-dsc7111'].src],
     status: 'Published',
     lastUpdated: '2026-09-19',
     isMockData: true,
@@ -71,8 +60,8 @@ export const MOCK_PROJECTS: AdminProject[] = [
     role: 'Lead Character',
     year: '2023',
     description: 'Poetic short film focusing on character expression and monologue. [Demo Data]',
-    featuredImage: pmb3284,
-    galleryImages: [pmb3284],
+    featuredImage: IMAGE_REGISTRY['film-pmb3284'].src,
+    galleryImages: [IMAGE_REGISTRY['film-pmb3284'].src],
     status: 'Draft',
     lastUpdated: '2026-09-15',
     isMockData: true,
@@ -88,8 +77,8 @@ export const MOCK_THEATRE_PRODUCTIONS: AdminTheatreProduction[] = [
     company: 'City Theatre Ensemble [Demo]',
     venue: 'National Theatre Stage [Demo]',
     year: '2024',
-    featuredImage: theatre1,
-    galleryImages: [theatre1, theatre2],
+    featuredImage: IMAGE_REGISTRY['theatre-stage-1'].src,
+    galleryImages: [IMAGE_REGISTRY['theatre-stage-1'].src, IMAGE_REGISTRY['theatre-stage-2'].src],
     description: 'A dramatic adaptation focusing on classical stage presence and character transformation. [Demo Data]',
     status: 'Published',
     lastUpdated: '2026-09-20',
@@ -103,8 +92,8 @@ export const MOCK_THEATRE_PRODUCTIONS: AdminTheatreProduction[] = [
     company: 'Contemporary Drama Lab [Demo]',
     venue: 'Black Box Theatre [Demo]',
     year: '2023',
-    featuredImage: theatre2,
-    galleryImages: [theatre2],
+    featuredImage: IMAGE_REGISTRY['theatre-stage-2'].src,
+    galleryImages: [IMAGE_REGISTRY['theatre-stage-2'].src],
     description: 'Experimental contemporary play exploring movement and spoken dialogue. [Demo Data]',
     status: 'Published',
     lastUpdated: '2026-09-12',
@@ -112,104 +101,26 @@ export const MOCK_THEATRE_PRODUCTIONS: AdminTheatreProduction[] = [
   },
 ];
 
-export const MOCK_MEDIA_ASSETS: AdminMediaAsset[] = [
-  {
-    id: 'm1',
-    filename: 'Main Photo.jpg',
-    src: mainPhoto,
-    type: 'image',
-    dimensions: '4000 x 5234 px',
-    size: '10.6 MB',
-    altText: 'Rashmi Uprety studio portrait for homepage hero',
-    category: 'Portraits',
-    isFeatured: true,
-    createdAt: '2026-09-01',
-  },
-  {
-    id: 'm2',
-    filename: 'portrait.jpg',
-    src: portraitImg,
-    type: 'image',
-    dimensions: '4000 x 5234 px',
-    size: '10.6 MB',
-    altText: 'Rashmi Uprety editorial portrait study',
-    category: 'Editorial',
-    isFeatured: true,
-    createdAt: '2026-09-02',
-  },
-  {
-    id: 'm3',
-    filename: 'theatre-1.jpg',
-    src: theatre1,
-    type: 'image',
-    dimensions: '6000 x 4000 px',
-    size: '7.6 MB',
-    altText: 'Rashmi Uprety dramatic stage performance',
-    category: 'Theatre',
-    isFeatured: true,
-    createdAt: '2026-09-05',
-  },
-  {
-    id: 'm4',
-    filename: 'theatre-2.jpg',
-    src: theatre2,
-    type: 'image',
-    dimensions: '6000 x 4000 px',
-    size: '7.1 MB',
-    altText: 'Rashmi Uprety stage monologue moment',
-    category: 'Theatre',
-    isFeatured: false,
-    createdAt: '2026-09-06',
-  },
-  {
-    id: 'm5',
-    filename: 'PMB04429.jpg',
-    src: pmb4429,
-    type: 'image',
-    dimensions: '6336 x 9504 px',
-    size: '26.1 MB',
-    altText: 'Cinematic project key art still',
-    category: 'Film',
-    isFeatured: true,
-    createdAt: '2026-09-08',
-  },
-  {
-    id: 'm6',
-    filename: 'DSC07111.JPG',
-    src: dsc7111,
-    type: 'image',
-    dimensions: '3008 x 2000 px',
-    size: '4.0 MB',
-    altText: 'Behind the scenes studio portrait',
-    category: 'Behind the Scenes',
-    isFeatured: false,
-    createdAt: '2026-09-10',
-  },
-  {
-    id: 'm7',
-    filename: 'DSC07418.JPG',
-    src: dsc7418,
-    type: 'image',
-    dimensions: '3008 x 2000 px',
-    size: '5.2 MB',
-    altText: 'Editorial outdoor portrait capture',
-    category: 'Editorial',
-    isFeatured: false,
-    createdAt: '2026-09-11',
-  },
-  {
-    id: 'm8',
-    filename: 'IMG_4724.JPG',
-    src: img4724,
-    type: 'image',
-    dimensions: '3268 x 4476 px',
-    size: '2.1 MB',
-    altText: 'Character facial expression study',
-    category: 'Portraits',
-    isFeatured: false,
-    createdAt: '2026-09-14',
-  },
-];
+// Map all registry items into AdminMediaAssets with Usage metadata
+export const MOCK_MEDIA_ASSETS: AdminMediaAsset[] = Object.values(IMAGE_REGISTRY).map((img) => ({
+  id: img.imageId,
+  filename: img.filename,
+  src: img.src,
+  type: 'image',
+  dimensions: img.dimensions,
+  size: img.size,
+  altText: img.alt,
+  category: img.category as any,
+  usage: img.usage,
+  featured: img.featured,
+  project: img.project,
+  year: img.year,
+  orientation: img.orientation,
+  isFeatured: img.featured,
+  imageId: img.imageId,
+  alt: img.alt,
+  createdAt: '2026-09-01',
+}));
 
 export const MOCK_INQUIRIES: AdminInquiry[] = [
   {
@@ -265,12 +176,12 @@ export const MOCK_SITE_SETTINGS: AdminSiteSettings = {
   tiktokUrl: 'https://tiktok.com/@demo_rashmiuprety',
   metaTitle: 'Rashmi Uprety — Actress & Theatre Artist Portfolio',
   metaDescription: 'Official portfolio website of Rashmi Uprety featuring film work, theatre productions, showreel, and portraits.',
-  ogImage: 'src/assets/images/Main Photo.jpg',
+  ogImage: IMAGE_REGISTRY['main-photo'].src,
 };
 
 export const MOCK_RECENT_ACTIVITY = [
-  { id: 'act-1', text: 'Updated Home Page Hero configuration', time: '10 mins ago', user: 'Admin' },
-  { id: 'act-2', text: 'Added new Theatre production "The Cherry Orchard"', time: '2 hours ago', user: 'Admin' },
-  { id: 'act-3', text: 'Received new Inquiry from Aarav Sharma', time: '6 hours ago', user: 'System' },
-  { id: 'act-4', text: 'Uploaded 3 new high-res media assets', time: '1 day ago', user: 'Admin' },
+  { id: 'act-1', text: 'Assigned unique image assets across Hero, About, Work & Contact sections', time: '10 mins ago', user: 'Admin' },
+  { id: 'act-2', text: 'Updated Home Page Hero configuration', time: '1 hour ago', user: 'Admin' },
+  { id: 'act-3', text: 'Added new Theatre production "The Cherry Orchard"', time: '2 hours ago', user: 'Admin' },
+  { id: 'act-4', text: 'Received new Inquiry from Aarav Sharma', time: '6 hours ago', user: 'System' },
 ];

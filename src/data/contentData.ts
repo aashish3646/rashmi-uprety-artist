@@ -1,4 +1,6 @@
-// Real local image assets for Rashmi Uprety
+import { ImageMetadata } from '../types/admin';
+
+// Real local image imports for Rashmi Uprety
 import mainPhoto from '../assets/images/Main Photo.jpg';
 import portraitImg from '../assets/images/portrait.jpg';
 import pmb3283 from '../assets/images/PMB03283.jpg';
@@ -11,36 +13,277 @@ import dsc7418 from '../assets/images/DSC07418.JPG';
 import img4724 from '../assets/images/IMG_4724.JPG';
 import img4742 from '../assets/images/IMG_4742.JPG';
 import img4744 from '../assets/images/IMG_4744.JPG';
+import img9578 from '../assets/images/IMG_9578.JPG';
+import img9581 from '../assets/images/IMG_9581.JPG';
+import img9625 from '../assets/images/IMG_9625.JPG';
+import j9a8103 from '../assets/images/_J9A8103.jpg';
 
-export const HERO_IMAGE = {
-  src: mainPhoto,
-  alt: 'Rashmi Uprety portrait in artistic studio setting',
-  width: 4000,
-  height: 5234,
+/**
+ * CENTRALIZED IMAGE REGISTRY & METADATA SYSTEM
+ * Intentional photograph assignments mapped to specific page usages and categories.
+ */
+export const IMAGE_REGISTRY: Record<string, ImageMetadata> = {
+  'main-photo': {
+    imageId: 'main-photo',
+    id: 'main-photo',
+    filename: 'Main Photo.jpg',
+    src: mainPhoto,
+    alt: 'Rashmi Uprety portrait in artistic studio setting with subtle negative space',
+    altText: 'Rashmi Uprety portrait in artistic studio setting with subtle negative space',
+    category: 'portrait',
+    usage: ['hero', 'gallery'],
+    featured: true,
+    isFeatured: true,
+    orientation: 'portrait',
+    dimensions: '4000 x 5234 px',
+    size: '11.1 MB',
+  },
+  'portrait-editorial': {
+    imageId: 'portrait-editorial',
+    id: 'portrait-editorial',
+    filename: 'portrait.jpg',
+    src: portraitImg,
+    alt: 'Rashmi Uprety editorial expression portrait study',
+    altText: 'Rashmi Uprety editorial expression portrait study',
+    category: 'editorial',
+    usage: ['about', 'gallery'],
+    featured: true,
+    isFeatured: true,
+    orientation: 'portrait',
+    dimensions: '4000 x 5234 px',
+    size: '11.1 MB',
+  },
+  'theatre-stage-1': {
+    imageId: 'theatre-stage-1',
+    id: 'theatre-stage-1',
+    filename: 'theatre-1.jpg',
+    src: theatre1,
+    alt: 'Rashmi Uprety performing on stage in live theatre production',
+    altText: 'Rashmi Uprety performing on stage in live theatre production',
+    category: 'theatre',
+    usage: ['theatre', 'gallery'],
+    featured: true,
+    isFeatured: true,
+    project: 'The Cherry Orchard (Adaptation)',
+    year: '2024',
+    orientation: 'landscape',
+    dimensions: '6000 x 4000 px',
+    size: '8.0 MB',
+  },
+  'theatre-stage-2': {
+    imageId: 'theatre-stage-2',
+    id: 'theatre-stage-2',
+    filename: 'theatre-2.jpg',
+    src: theatre2,
+    alt: 'Rashmi Uprety dramatic stage monologue moment',
+    altText: 'Rashmi Uprety dramatic stage monologue moment',
+    category: 'theatre',
+    usage: ['theatre', 'gallery'],
+    featured: false,
+    isFeatured: false,
+    project: 'Silence in the Rain',
+    year: '2023',
+    orientation: 'landscape',
+    dimensions: '6000 x 4000 px',
+    size: '7.4 MB',
+  },
+  'film-pmb4429': {
+    imageId: 'film-pmb4429',
+    id: 'film-pmb4429',
+    filename: 'PMB04429.jpg',
+    src: pmb4429,
+    alt: 'Rashmi Uprety feature film key art still',
+    altText: 'Rashmi Uprety feature film key art still',
+    category: 'work',
+    usage: ['work', 'gallery'],
+    featured: true,
+    isFeatured: true,
+    project: 'The Unspoken Solitude',
+    year: '2024',
+    orientation: 'portrait',
+    dimensions: '6336 x 9504 px',
+    size: '27.3 MB',
+  },
+  'film-pmb3283': {
+    imageId: 'film-pmb3283',
+    id: 'film-pmb3283',
+    filename: 'PMB03283.jpg',
+    src: pmb3283,
+    alt: 'Rashmi Uprety dramatic screen role still',
+    altText: 'Rashmi Uprety dramatic screen role still',
+    category: 'work',
+    usage: ['work', 'gallery'],
+    featured: true,
+    isFeatured: true,
+    project: 'Echoes in the Shadows',
+    year: '2023',
+    orientation: 'portrait',
+    dimensions: '6336 x 9504 px',
+    size: '6.2 MB',
+  },
+  'film-pmb3284': {
+    imageId: 'film-pmb3284',
+    id: 'film-pmb3284',
+    filename: 'PMB03284.jpg',
+    src: pmb3284,
+    alt: 'Rashmi Uprety short film character close-up',
+    altText: 'Rashmi Uprety short film character close-up',
+    category: 'work',
+    usage: ['work', 'gallery'],
+    featured: false,
+    isFeatured: false,
+    project: 'Whispers of the Wind',
+    year: '2023',
+    orientation: 'portrait',
+    dimensions: '6336 x 9504 px',
+    size: '6.4 MB',
+  },
+  'showreel-img9578': {
+    imageId: 'showreel-img9578',
+    id: 'showreel-img9578',
+    filename: 'IMG_9578.JPG',
+    src: img9578,
+    alt: 'Rashmi Uprety cinematic reel preview thumbnail',
+    altText: 'Rashmi Uprety cinematic reel preview thumbnail',
+    category: 'showreel',
+    usage: ['showreel', 'gallery'],
+    featured: true,
+    isFeatured: true,
+    orientation: 'landscape',
+    dimensions: '4160 x 2773 px',
+    size: '762 KB',
+  },
+  'contact-img9625': {
+    imageId: 'contact-img9625',
+    id: 'contact-img9625',
+    filename: 'IMG_9625.JPG',
+    src: img9625,
+    alt: 'Rashmi Uprety serene atmospheric portrait for contact portal',
+    altText: 'Rashmi Uprety serene atmospheric portrait for contact portal',
+    category: 'editorial',
+    usage: ['contact', 'gallery'],
+    featured: true,
+    isFeatured: true,
+    orientation: 'portrait',
+    dimensions: '2667 x 4000 px',
+    size: '1.5 MB',
+  },
+  'gallery-dsc7111': {
+    imageId: 'gallery-dsc7111',
+    id: 'gallery-dsc7111',
+    filename: 'DSC07111.JPG',
+    src: dsc7111,
+    alt: 'Rashmi Uprety behind the scenes studio capture',
+    altText: 'Rashmi Uprety behind the scenes studio capture',
+    category: 'behind-the-scenes',
+    usage: ['gallery'],
+    featured: false,
+    isFeatured: false,
+    orientation: 'landscape',
+    dimensions: '3008 x 2000 px',
+    size: '4.1 MB',
+  },
+  'gallery-dsc7418': {
+    imageId: 'gallery-dsc7418',
+    id: 'gallery-dsc7418',
+    filename: 'DSC07418.JPG',
+    src: dsc7418,
+    alt: 'Rashmi Uprety outdoor natural light portrait',
+    altText: 'Rashmi Uprety outdoor natural light portrait',
+    category: 'editorial',
+    usage: ['gallery'],
+    featured: false,
+    isFeatured: false,
+    orientation: 'landscape',
+    dimensions: '3008 x 2000 px',
+    size: '5.4 MB',
+  },
+  'gallery-img4724': {
+    imageId: 'gallery-img4724',
+    id: 'gallery-img4724',
+    filename: 'IMG_4724.JPG',
+    src: img4724,
+    alt: 'Rashmi Uprety intimate character expression',
+    altText: 'Rashmi Uprety intimate character expression',
+    category: 'portrait',
+    usage: ['gallery'],
+    featured: false,
+    isFeatured: false,
+    orientation: 'portrait',
+    dimensions: '3268 x 4476 px',
+    size: '2.2 MB',
+  },
+  'gallery-img4742': {
+    imageId: 'gallery-img4742',
+    id: 'gallery-img4742',
+    filename: 'IMG_4742.JPG',
+    src: img4742,
+    alt: 'Rashmi Uprety classic portrait study',
+    altText: 'Rashmi Uprety classic portrait study',
+    category: 'portrait',
+    usage: ['gallery'],
+    featured: false,
+    isFeatured: false,
+    orientation: 'portrait',
+    dimensions: '3375 x 4931 px',
+    size: '2.7 MB',
+  },
+  'gallery-img4744': {
+    imageId: 'gallery-img4744',
+    id: 'gallery-img4744',
+    filename: 'IMG_4744.JPG',
+    src: img4744,
+    alt: 'Rashmi Uprety monochrome portrait study',
+    altText: 'Rashmi Uprety monochrome portrait study',
+    category: 'portrait',
+    usage: ['gallery'],
+    featured: false,
+    isFeatured: false,
+    orientation: 'portrait',
+    dimensions: '3375 x 4813 px',
+    size: '3.5 MB',
+  },
+  'gallery-img9581': {
+    imageId: 'gallery-img9581',
+    id: 'gallery-img9581',
+    filename: 'IMG_9581.JPG',
+    src: img9581,
+    alt: 'Rashmi Uprety expressive dramatic portrait',
+    altText: 'Rashmi Uprety expressive dramatic portrait',
+    category: 'portrait',
+    usage: ['gallery'],
+    featured: false,
+    isFeatured: false,
+    orientation: 'portrait',
+    dimensions: '2773 x 4160 px',
+    size: '507 KB',
+  },
+  'gallery-j9a8103': {
+    imageId: 'gallery-j9a8103',
+    id: 'gallery-j9a8103',
+    filename: '_J9A8103.jpg',
+    src: j9a8103,
+    alt: 'Rashmi Uprety headshot study',
+    altText: 'Rashmi Uprety headshot study',
+    category: 'portrait',
+    usage: ['gallery'],
+    featured: false,
+    isFeatured: false,
+    orientation: 'portrait',
+    dimensions: '672 x 1008 px',
+    size: '437 KB',
+  },
 };
 
-export const INTRO_IMAGE = {
-  src: portraitImg,
-  alt: 'Rashmi Uprety editorial portrait',
-  width: 4000,
-  height: 5234,
-};
+// Distinct Image Exports for Specific Page Sections
+export const HERO_IMAGE = IMAGE_REGISTRY['main-photo'];
+export const INTRO_IMAGE = IMAGE_REGISTRY['portrait-editorial'];
+export const THEATRE_IMAGE = IMAGE_REGISTRY['theatre-stage-1'];
+export const THEATRE_IMAGE_SECONDARY = IMAGE_REGISTRY['theatre-stage-2'];
+export const CONTACT_IMAGE = IMAGE_REGISTRY['contact-img9625'];
+export const SHOWREEL_THUMBNAIL = IMAGE_REGISTRY['showreel-img9578'];
 
-export const THEATRE_IMAGE = {
-  src: theatre1,
-  alt: 'Rashmi Uprety performing on stage in theatre production',
-  width: 6000,
-  height: 4000,
-};
-
-export const THEATRE_IMAGE_SECONDARY = {
-  src: theatre2,
-  alt: 'Rashmi Uprety dramatic theatre performance',
-  width: 6000,
-  height: 4000,
-};
-
-// Clearly marked temporary work projects data
+// Clearly marked temporary work projects data with distinct project images
 export const TEMPORARY_WORK_PROJECTS = [
   {
     id: 'proj-01',
@@ -49,8 +292,8 @@ export const TEMPORARY_WORK_PROJECTS = [
     role: 'Lead Role · Feature Film',
     year: '2024',
     category: 'Film',
-    image: pmb4429,
-    alt: 'Rashmi Uprety in feature film cinematic scene',
+    image: IMAGE_REGISTRY['film-pmb4429'].src,
+    alt: IMAGE_REGISTRY['film-pmb4429'].alt,
     isTemporary: true,
   },
   {
@@ -60,8 +303,8 @@ export const TEMPORARY_WORK_PROJECTS = [
     role: 'Protagonist · Independent Drama',
     year: '2023',
     category: 'Drama',
-    image: pmb3283,
-    alt: 'Rashmi Uprety dramatic portrait',
+    image: IMAGE_REGISTRY['film-pmb3283'].src,
+    alt: IMAGE_REGISTRY['film-pmb3283'].alt,
     isTemporary: true,
   },
   {
@@ -71,19 +314,19 @@ export const TEMPORARY_WORK_PROJECTS = [
     role: 'Lead Character · Short Film',
     year: '2023',
     category: 'Short Film',
-    image: pmb3284,
-    alt: 'Rashmi Uprety character portrait',
+    image: IMAGE_REGISTRY['film-pmb3284'].src,
+    alt: IMAGE_REGISTRY['film-pmb3284'].alt,
     isTemporary: true,
   },
 ];
 
-export const GALLERY_FEATURED = [
-  { id: 'g1', src: dsc7111, alt: 'Rashmi Uprety portrait shoot', width: 3008, height: 2000 },
-  { id: 'g2', src: dsc7418, alt: 'Rashmi Uprety editorial capture', width: 3008, height: 2000 },
-  { id: 'g3', src: img4724, alt: 'Rashmi Uprety character expression', width: 3268, height: 4476 },
-  { id: 'g4', src: img4742, alt: 'Rashmi Uprety studio portrait', width: 3375, height: 4931 },
-  { id: 'g5', src: img4744, alt: 'Rashmi Uprety monochrome study', width: 3375, height: 4813 },
-];
+export const GALLERY_FEATURED = Object.values(IMAGE_REGISTRY).map((img) => ({
+  id: img.imageId,
+  src: img.src,
+  alt: img.alt,
+  category: img.category,
+  orientation: img.orientation,
+}));
 
 export const NAV_LINKS = [
   { number: '01', label: 'HOME', path: '/' },

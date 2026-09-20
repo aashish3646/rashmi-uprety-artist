@@ -42,6 +42,11 @@ export function MediaDetails({ asset, onClose }: MediaDetailsProps) {
         </div>
 
         <div>
+          <span className="text-neutral-400 block uppercase tracking-wider text-[10px]">Orientation</span>
+          <span className="text-neutral-700 capitalize font-medium">{asset.orientation}</span>
+        </div>
+
+        <div>
           <span className="text-neutral-400 block uppercase tracking-wider text-[10px]">Alt Text</span>
           <input
             type="text"
@@ -50,9 +55,30 @@ export function MediaDetails({ asset, onClose }: MediaDetailsProps) {
           />
         </div>
 
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <span className="text-neutral-400 block uppercase tracking-wider text-[10px]">Category</span>
+            <span className="text-neutral-700 font-medium capitalize">{asset.category}</span>
+          </div>
+          <div>
+            <span className="text-neutral-400 block uppercase tracking-wider text-[10px]">Featured</span>
+            <span className="text-neutral-700 font-medium">{asset.isFeatured ? 'Yes' : 'No'}</span>
+          </div>
+        </div>
+
         <div>
-          <span className="text-neutral-400 block uppercase tracking-wider text-[10px]">Category</span>
-          <span className="text-neutral-700 font-medium">{asset.category}</span>
+          <span className="text-neutral-400 block uppercase tracking-wider text-[10px] mb-1">Section Usage Assignments</span>
+          <div className="flex flex-wrap gap-1">
+            {asset.usage && asset.usage.length > 0 ? (
+              asset.usage.map((u) => (
+                <span key={u} className="px-2 py-0.5 bg-neutral-100 border border-neutral-200 text-neutral-700 rounded text-[10px] uppercase tracking-wider font-mono">
+                  {u}
+                </span>
+              ))
+            ) : (
+              <span className="text-neutral-400 text-[11px]">General Gallery</span>
+            )}
+          </div>
         </div>
       </div>
 

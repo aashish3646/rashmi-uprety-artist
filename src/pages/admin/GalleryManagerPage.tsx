@@ -3,13 +3,23 @@ import { AdminLayout } from '../../components/admin/AdminLayout';
 import { PageHeader } from '../../components/admin/PageHeader';
 import { FilterBar } from '../../components/admin/FilterBar';
 import { MOCK_MEDIA_ASSETS } from '../../data/admin/mockAdminData';
+import { ImageCategory } from '../../types/admin';
 import { Save, GripVertical, Eye, Trash2 } from 'lucide-react';
 
 export function GalleryManagerPage() {
-  const [activeCategory, setActiveCategory] = useState<'Portraits' | 'Theatre' | 'Editorial' | 'Film' | 'Behind the Scenes'>('Portraits');
+  const [activeCategory, setActiveCategory] = useState<ImageCategory>('portrait');
   const [items, setItems] = useState(MOCK_MEDIA_ASSETS);
 
   const categoryItems = items.filter((i) => i.category === activeCategory);
+
+  const categories: { label: string; value: ImageCategory }[] = [
+    { label: 'Portraits', value: 'portrait' },
+    { label: 'Editorial', value: 'editorial' },
+    { label: 'Theatre', value: 'theatre' },
+    { label: 'Work', value: 'work' },
+    { label: 'Showreel', value: 'showreel' },
+    { label: 'Behind the Scenes', value: 'behind-the-scenes' },
+  ];
 
   return (
     <AdminLayout>
@@ -30,23 +40,23 @@ export function GalleryManagerPage() {
       {/* Category Tabs */}
       <FilterBar>
         <div className="flex items-center gap-2 overflow-x-auto w-full pb-1 sm:pb-0">
-          {(['Portraits', 'Theatre', 'Editorial', 'Film', 'Behind the Scenes'] as const).map((cat) => (
+          {categories.map((cat) => (
             <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-3.5 py-1.5 rounded-md text-xs font-medium font-sans whitespace-nowrap transition-colors ${
-                activeCategory === cat
+              key={cat.value}
+              onClick={() => setActiveCategory(cat.value)}
+              className={`px-3.5 py-1.5 rounded-md text-xs font-medium font-sans whitespace-nowrap transition-colors capitalize ${
+                activeCategory === cat.value
                   ? 'bg-neutral-900 text-white'
                   : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
               }`}
             >
-              {cat}
+              {cat.label}
             </button>
           ))}
         </div>
       </FilterBar>
 
-      <div className="bg-white border border-neutral-200 rounded-lg p-6 shadow-xs space-y-4">
+      <div className="bg-white border border-neutral-200 rounded-lg p-6 shadow-xs space-y-4 font-sans">
         <div className="flex items-center justify-between border-b border-neutral-100 pb-3">
           <span className="text-xs font-semibold text-neutral-500 uppercase tracking-wider">
             Category: {activeCategory} ({categoryItems.length} Images)
@@ -75,7 +85,7 @@ export function GalleryManagerPage() {
                   </div>
                   <div>
                     <span className="text-xs font-semibold text-neutral-900 block">{asset.filename}</span>
-                    <span className="text-[11px] text-neutral-400">{asset.dimensions}</span>
+                    <span className="text-[11px] text-neutral-400">{asset.dimensions} • {asset.orientation}</span>
                   </div>
                 </div>
 
